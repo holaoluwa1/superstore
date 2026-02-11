@@ -60,19 +60,4 @@ with timeseries_col:
     st.line_chart(sales_time)
 
 
-
-st.subheader("Profit by Category")
-plt.figure()
-sns.barplot(x="Category", y="Profit", data=df, estimator=sum)
-st.pyplot(plt)
-
-
-st.subheader("Sales Trend Over Time")
-df["Order Date"] = pd.to_datetime(df["Order Date"])
-sales_trend = df.groupby(df["Order Date"].dt.to_period("M"))["Sales"].sum()
-st.line_chart(sales_trend)
-
-
-st.subheader("🏆 Top 10 Products by Sales")
-top_products = df.groupby("Product Name")["Sales"].sum().sort_values(ascending=False).head(10)
-st.bar_chart(top_products)    
+   
